@@ -236,7 +236,7 @@ class GetPersonalizedDigestsTestCase(TestCase, SnubaTestCase):
         result_user_ids = []
         for user_id, user_digest in get_personalized_digests(
             target_type, project.id, digest, user_ids
-        ).items():
+        ):
             assert user_id in expected_result
             assert {e.event_id for e in get_event_from_groups_in_digest(user_digest)} == {
                 e.event_id for e in expected_result[user_id]
@@ -303,7 +303,7 @@ class GetPersonalizedDigestsTestCase(TestCase, SnubaTestCase):
         assert not user_ids
         for user_id, user_digest in get_personalized_digests(
             ActionTargetType.ISSUE_OWNERS, project.id, digest, user_ids
-        ).items():
+        ):
             assert False  # no users in this team no digests should be processed
 
     def test_only_everyone(self):
