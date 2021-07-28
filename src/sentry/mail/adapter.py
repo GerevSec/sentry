@@ -205,7 +205,9 @@ class MailAdapter:
             },
         )
         org = project.organization
-        for user_id, digest in get_personalized_digests(target_type, project.id, digest, user_ids):
+        for user_id, digest in get_personalized_digests(
+            target_type, project.id, digest, user_ids
+        ).items():
             start, end, counts = get_digest_metadata(digest)
 
             # If there is only one group in this digest (regardless of how many
